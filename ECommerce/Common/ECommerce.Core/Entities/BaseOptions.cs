@@ -8,5 +8,5 @@ namespace InfoQ.Core.Entities
         public TokenOptions TokenOptions { get; set; }
         public RabbitMq RabbitMq { get; set; }
         public Service[] Services { get; set; }
-    } 
+    }
 }

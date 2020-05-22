@@ -1,8 +1,5 @@
 ﻿using ECommerce.Core.Amqp.Commands;
 using ECommerce.Core.Amqp.Events;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ECommerce.Core.Amqp.Bus

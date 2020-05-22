@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ECommerce.Core.Utilities.Exceptions
 {
@@ -8,7 +6,6 @@ namespace ECommerce.Core.Utilities.Exceptions
     {
         public OutOfBorderException() : base(@"Out of Border...")
         {
-
         }
     }
 }

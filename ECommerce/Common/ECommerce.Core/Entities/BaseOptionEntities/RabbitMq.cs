@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ECommerce.Core.Entities.BaseOptionEntities
+﻿namespace ECommerce.Core.Entities.BaseOptionEntities
 {
     public class RabbitMq
     {

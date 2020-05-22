@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ECommerce.Core.Entities;
+﻿using ECommerce.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
