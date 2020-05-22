@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Common", "1-Common", "{F5EDD48D-D918-4913-8E03-C82139517A73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Services", "2-Services", "{A0751617-36E2-4D38-9B72-DDEAA6DA7CE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-ApiGateway", "3-ApiGateway", "{4EB196D0-78B5-40F2-8918-D90A5126E445}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Tets", "4-Tets", "{1D82EE5D-5E9A-4973-96FF-68C29517667B}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D46E76C-8021-4AF4-A970-060C61FD1B3E}
+	EndGlobalSection
+EndGlobal
