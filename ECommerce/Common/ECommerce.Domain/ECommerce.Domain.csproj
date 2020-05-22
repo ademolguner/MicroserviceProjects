@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Events\BasketEvents\" />
+    <Folder Include="Events\ProductEvents\" />
+    <Folder Include="Features\BasketFeatures\Commands\" />
+    <Folder Include="Features\BasketFeatures\Queries\" />
+    <Folder Include="Features\ProductFeatures\Commands\" />
+    <Folder Include="Features\ProductFeatures\Queries\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Amqp\Bus\" />
+    <Folder Include="Amqp\Commands\" />
+    <Folder Include="Amqp\Events\" />
+    <Folder Include="Amqp\Infrastructure\" />
+    <Folder Include="CrossCutting\Caching\Microsoft\" />
+    <Folder Include="CrossCutting\Caching\Redis\" />
+    <Folder Include="CrossCutting\Logging\Log4Net\" />
+    <Folder Include="CrossCutting\Logging\NLog\" />
+    <Folder Include="DataAccess\EntityFramework\" />
+    <Folder Include="DataAccess\Http\" />
+    <Folder Include="DataAccess\Mongo\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Utilities\Exceptions\" />
+  </ItemGroup>
+
+</Project>
