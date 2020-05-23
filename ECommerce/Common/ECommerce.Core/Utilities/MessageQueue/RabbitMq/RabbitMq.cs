@@ -1,4 +1,4 @@
-﻿namespace ECommerce.Core.Entities.BaseOptionEntities
+﻿namespace ECommerce.Core.Utilities.MessageQueue.RabbitMq
 {
     public class RabbitMq
     {

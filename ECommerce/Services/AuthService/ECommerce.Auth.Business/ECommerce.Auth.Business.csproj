@@ -3,5 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
+	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ECommerce.Auth.DataAccess\ECommerce.Auth.DataAccess.csproj" />
+  </ItemGroup>
 
 </Project>

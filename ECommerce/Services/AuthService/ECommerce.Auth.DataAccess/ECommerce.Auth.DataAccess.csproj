@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ECommerce.Auth.Entities\ECommerce.Auth.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

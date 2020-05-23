@@ -1,4 +1,7 @@
-﻿using ECommerce.Core.Entities.BaseOptionEntities;
+﻿using ECommerce.Core.Utilities.ApiServices;
+using ECommerce.Core.Utilities.Caching.Redis;
+using ECommerce.Core.Utilities.MessageQueue.RabbitMq;
+using ECommerce.Core.Utilities.Security.Jwt;
 
 namespace InfoQ.Core.Entities
 {

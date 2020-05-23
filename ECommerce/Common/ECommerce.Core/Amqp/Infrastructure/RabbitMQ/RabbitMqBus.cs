@@ -50,14 +50,12 @@ namespace ECommerce.Core.Amqp.Infrastructure.RabbitMQ
                 Port = _options.RabbitMq.Port
             };
             using var connection = factory.CreateConnection();
-            using (var channel = connection.CreateModel())
-            {
-                var eventName = @event.GetType().Name;
-                channel.QueueDeclare(eventName, false, false, false, null);
-                var message = JsonConvert.SerializeObject(@event);
-                var body = Encoding.UTF8.GetBytes(message);
-                channel.BasicPublish("", eventName, null, body);
-            }
+            using var channel = connection.CreateModel();
+            var eventName = @event.GetType().Name;
+            channel.QueueDeclare(eventName, false, false, false, null);
+            var message = JsonConvert.SerializeObject(@event);
+            var body = Encoding.UTF8.GetBytes(message);
+            channel.BasicPublish("", eventName, null, body);
         }
 
         public void Subscribe<T, TH>() where T : Event where TH : IEventHandler<T>
