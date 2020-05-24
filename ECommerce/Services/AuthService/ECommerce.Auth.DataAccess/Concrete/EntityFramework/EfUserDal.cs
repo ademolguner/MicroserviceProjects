@@ -2,9 +2,7 @@
 using ECommerce.Auth.DataAccess.Concrete.EntityFramework.Context;
 using ECommerce.Auth.Entities.Models;
 using ECommerce.Core.DataAccess.EntityFramework;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace ECommerce.Auth.DataAccess.Concrete.EntityFramework

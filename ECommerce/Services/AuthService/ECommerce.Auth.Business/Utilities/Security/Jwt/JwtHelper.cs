@@ -9,7 +9,6 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
-
 namespace ECommerce.Auth.Business.Utilities.Security.Jwt
 {
     public class JwtHelper : ITokenHelper
@@ -17,6 +16,7 @@ namespace ECommerce.Auth.Business.Utilities.Security.Jwt
         private IConfiguration Configuration { get; }  // appsetting dosyasından okumak için
         private TokenOptions TokenOptions { get; }
         private readonly DateTime _accessTokenExpiration;
+
         public JwtHelper(IConfiguration configuration)
         {
             Configuration = configuration;

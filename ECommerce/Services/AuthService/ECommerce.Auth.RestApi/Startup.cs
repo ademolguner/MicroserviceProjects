@@ -1,10 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using ECommerce.Auth.Business.Abstract;
 using ECommerce.Auth.Business.AuthFeature.Handlers;
 using ECommerce.Auth.Business.Concrete.Managers;
@@ -12,22 +5,21 @@ using ECommerce.Auth.Business.Utilities.Security.Jwt;
 using ECommerce.Auth.DataAccess.Abstract;
 using ECommerce.Auth.DataAccess.Concrete.EntityFramework;
 using ECommerce.Auth.DataAccess.Concrete.EntityFramework.Context;
-using ECommerce.Auth.Entities.AuthFeature.Commands;
-using ECommerce.Core.Amqp.Bus;
 using ECommerce.Core.Utilities.Security.Jwt;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Text;
 
 namespace ECommerce.Auth.RestApi
 {
@@ -57,14 +49,10 @@ namespace ECommerce.Auth.RestApi
             //        Configuration.GetConnectionString("DefaultConnection"),
             //        b => b.MigrationsAssembly(typeof(ECommerceAuthApiProjectDbContext).Assembly.FullName)));
 
-
-
             services.AddMediatR(typeof(Startup));
             services.AddMediatR(typeof(UserRegisterCommandHandler).GetTypeInfo().Assembly);
             services.AddMediatR(typeof(UserLoginCommandHandler).GetTypeInfo().Assembly);
             services.AddMediatR(typeof(UserEditCommandHandler).GetTypeInfo().Assembly);
-
-
 
             services.AddSwaggerGen((options) =>
             {
@@ -110,7 +98,6 @@ namespace ECommerce.Auth.RestApi
                             }
                         },
                         new string[] {}
-
                     }
                 });
 
@@ -125,7 +112,6 @@ namespace ECommerce.Auth.RestApi
             {
                 option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
             }).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters

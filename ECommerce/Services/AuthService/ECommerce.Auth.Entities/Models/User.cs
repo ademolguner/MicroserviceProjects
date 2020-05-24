@@ -1,7 +1,5 @@
 ﻿using ECommerce.Core.Entities;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ECommerce.Auth.Entities.Models
 {
@@ -15,6 +13,6 @@ namespace ECommerce.Auth.Entities.Models
         public byte[] PasswordHash { get; set; }
         public bool Status { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime? DeletedDate { get; set; } 
+        public DateTime? DeletedDate { get; set; }
     }
 }

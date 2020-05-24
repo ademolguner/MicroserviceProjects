@@ -1,12 +1,9 @@
 ﻿using ECommerce.Auth.Business.Abstract;
 using ECommerce.Auth.Business.AuthFeature.Commands;
 using ECommerce.Auth.Business.Utilities.Security.Hasing;
-using ECommerce.Auth.Entities.Dtos;
 using ECommerce.Auth.Entities.Models;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,9 +11,8 @@ namespace ECommerce.Auth.Business.AuthFeature.Handlers
 {
     public class UserEditCommandHandler : IRequestHandler<UserEditCommand, User>
     {
-
-
         private readonly IUserService _userService;
+
         public UserEditCommandHandler(IUserService userService)
         {
             _userService = userService;
@@ -46,7 +42,5 @@ namespace ECommerce.Auth.Business.AuthFeature.Handlers
             //edit bilgisi değiştiği zaman belki sepet bilgiside büncellenebilir event tetiklenebilir sonra eklenecek
             return await _userService.Edit(editUserInfo);
         }
-
-
     }
 }

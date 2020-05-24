@@ -5,18 +5,16 @@ using ECommerce.Auth.Entities.AuthFeature.Commands;
 using ECommerce.Auth.Entities.Models;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace ECommerce.Auth.Business.AuthFeature.Handlers
 {
-   public class UserRegisterCommandHandler : IRequestHandler<UserRegisterCommand, int>
+    public class UserRegisterCommandHandler : IRequestHandler<UserRegisterCommand, int>
     {
-
         private readonly IAuthService _authService;
         private readonly IUserService _userService;
+
         public UserRegisterCommandHandler(IAuthService authService, IUserService userService)
         {
             _authService = authService;
@@ -26,7 +24,7 @@ namespace ECommerce.Auth.Business.AuthFeature.Handlers
         public async Task<int> Handle(UserRegisterCommand command, CancellationToken cancellationToken)
         {
             var userToCheck = await _userService.GetUserByMail(command.Email);
-            if (userToCheck == null)
+            if (userToCheck != null)
             {
                 throw new EmailAddressAlreadyUsedException();
             }
@@ -36,7 +34,7 @@ namespace ECommerce.Auth.Business.AuthFeature.Handlers
 
             var createdUser = await _authService.RegisterUser(new User
             {
-                Email = command.Email, 
+                Email = command.Email,
                 FirstName = command.FirstName,
                 LastName = command.LastName,
                 PasswordHash = passwordHash,
@@ -46,7 +44,5 @@ namespace ECommerce.Auth.Business.AuthFeature.Handlers
             });
             return createdUser.UserId;
         }
-
-
     }
 }

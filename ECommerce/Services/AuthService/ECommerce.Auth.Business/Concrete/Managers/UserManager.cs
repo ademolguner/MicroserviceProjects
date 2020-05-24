@@ -1,11 +1,7 @@
 ﻿using ECommerce.Auth.Business.Abstract;
-using ECommerce.Auth.Business.Utilities.Security.Hasing;
 using ECommerce.Auth.DataAccess.Abstract;
 using ECommerce.Auth.Entities.Models;
-using ServiceStack;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ECommerce.Auth.Business.Concrete.Managers
@@ -23,7 +19,6 @@ namespace ECommerce.Auth.Business.Concrete.Managers
         {
             return _userDal.GetClaims(user);
         }
-
 
         public async Task<User> GetUserByMail(string email)
         {
