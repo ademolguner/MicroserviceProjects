@@ -6,7 +6,7 @@ namespace ECommerce.Auth.Business.Utilities.Exceptions
 {
    public class UserNotFoundException: Exception
     {
-        public UserNotFoundException():base(@"Kullanıcı bilgileri hatalı, bilgileri girerek tekrar deneyiniz")
+        public UserNotFoundException():base(@"Kullanıcı bulunamadı")
         {
 
         }

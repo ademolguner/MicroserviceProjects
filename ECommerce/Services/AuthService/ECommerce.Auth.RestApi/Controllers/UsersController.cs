@@ -43,11 +43,11 @@ namespace ECommerce.Auth.RestApi.Controllers
             return Created(string.Empty, createdUser);
         }
 
-        [Route("api/users/editUSer")]
+        [Route("api/users/editUser")]
         [HttpPost]
-        public async Task<ActionResult> Edit(UserEditDto userEditDto)
+        public async Task<ActionResult> Edit(UserEditCommand userEditCommand)
         {
-            var updatedUser = await _mediator.Send(new UserEditCommand(userEditDto));
+            var updatedUser = await _mediator.Send(userEditCommand);
             return Ok(updatedUser);
         }
 
@@ -57,6 +57,14 @@ namespace ECommerce.Auth.RestApi.Controllers
         {
             var updatedUser = await _mediator.Send(new UserStatusChangeCommand(userID,status));
             return Ok(updatedUser);
+        }
+
+        [Route("api/users/{userID}")]
+        [HttpGet]
+        public async Task<ActionResult> Info(int userID)
+        {
+            var userInfo = await _mediator.Send(new UserInfoCommandQuery(userID));
+            return Ok(userInfo);
         }
     }
 }

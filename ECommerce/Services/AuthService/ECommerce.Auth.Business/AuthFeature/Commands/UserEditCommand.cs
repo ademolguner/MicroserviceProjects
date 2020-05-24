@@ -16,14 +16,14 @@ namespace ECommerce.Auth.Business.AuthFeature.Commands
         public string Password { get; set; }
         public bool Status { get; set; }
 
-        public UserEditCommand(UserEditDto userEditDto)
+        public UserEditCommand()
         {
-            this.Email = userEditDto.Email;
-            this.FirstName = userEditDto.FirstName;
-            this.LastName = userEditDto.LastName; 
-            this.Password = userEditDto.Password;
-            this.UserId = userEditDto.UserId;
-            this.Status = userEditDto.Status;
+            //this.Email = userEditDto.Email;
+            //this.FirstName = userEditDto.FirstName;
+            //this.LastName = userEditDto.LastName; 
+            //this.Password = userEditDto.Password;
+            //this.UserId = userEditDto.UserId;
+            //this.Status = userEditDto.Status;
         }
     }
 }
