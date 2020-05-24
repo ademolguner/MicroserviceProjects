@@ -10,5 +10,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ECommerce.Auth.DataAccess\ECommerce.Auth.DataAccess.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AuthFeature\Events\" />
+  </ItemGroup>
 
 </Project>

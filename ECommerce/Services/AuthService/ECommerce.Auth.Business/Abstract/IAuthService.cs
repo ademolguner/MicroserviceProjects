@@ -11,9 +11,7 @@ namespace ECommerce.Auth.Business.Abstract
 {
     public interface IAuthService
     {
-        
         Task<AccessToken> CreateAccessToken(User user);
-
         Task<User> RegisterUser(User user);
         Task<User> LoginUser(UserForLoginDto userForLoginDto);
     }

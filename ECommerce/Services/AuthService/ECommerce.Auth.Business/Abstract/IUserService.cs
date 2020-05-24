@@ -12,5 +12,8 @@ namespace ECommerce.Auth.Business.Abstract
         Task<User> GetUserByMail(string email);
         Task<User> Created(User user);
         Task<User> Login(string email, string password);
+
+        Task<User> Edit(User user);
+        Task<User> UserInfo(int userId);
     }
 }
