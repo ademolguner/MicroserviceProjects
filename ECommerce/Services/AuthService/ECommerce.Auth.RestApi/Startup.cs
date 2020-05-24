@@ -61,6 +61,7 @@ namespace ECommerce.Auth.RestApi
 
             services.AddMediatR(typeof(Startup));
             services.AddMediatR(typeof(UserRegisterCommandHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(UserLoginCommandHandler).GetTypeInfo().Assembly);
 
 
 

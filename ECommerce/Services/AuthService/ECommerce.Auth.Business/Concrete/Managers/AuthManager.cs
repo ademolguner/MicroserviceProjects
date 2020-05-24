@@ -20,49 +20,9 @@ namespace ECommerce.Auth.Business.Concrete.Managers
             _tokenHelper = tokenHelper;
         }
 
-        public User Register(UserForRegisterDto userForRegisterDto, string password)
-        {
-            byte[] passwordHash, passwordSalt;
-            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            var user = new User
-            {
-                Email = userForRegisterDto.Email,
-                FirstName = userForRegisterDto.FirstName,
-                LastName = userForRegisterDto.LastName,
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-                Status = true,
-                CreatedDate = DateTime.Now
-            };
-            _userService.Add(user);
-            return user;
-        }
 
-        public async Task<User> Login(UserForLoginDto userForLoginDto)
-        {
-            var userToCheck = await _userService.GetByMail(userForLoginDto.Email);
-            if (userToCheck == null)
-            {
-                throw new Exception("hata metni");
-            }
 
-            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
-            {
-                throw new Exception("hata metni"); ;
-            }
-
-            return userToCheck;
-        }
-
-        public bool UserExists(string email)
-        {
-            if (_userService.GetByMail(email) != null)
-            {
-                return false;
-            }
-            return true;
-        }
-
+       
         public AccessToken CreateAccessToken(User user)
         {
             var claims = _userService.GetClaims(user);
@@ -73,6 +33,10 @@ namespace ECommerce.Auth.Business.Concrete.Managers
         public async Task<User> RegisterUser(User user)
         {
             return await _userService.Created(user);
+        }
+        public async Task<User> LoginUser(UserForLoginDto userForLoginDto)
+        {
+            return await _userService.Login(userForLoginDto.Email, userForLoginDto.Password);
         }
     }
 }

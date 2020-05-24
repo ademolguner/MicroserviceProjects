@@ -1,4 +1,5 @@
 ﻿using ECommerce.Auth.Business.Abstract;
+using ECommerce.Auth.Business.Utilities.Security.Hasing;
 using ECommerce.Auth.DataAccess.Abstract;
 using ECommerce.Auth.Entities.Models;
 using System;
@@ -22,12 +23,8 @@ namespace ECommerce.Auth.Business.Concrete.Managers
             return _userDal.GetClaims(user);
         }
 
-        public void Add(User user)
-        {
-            _userDal.AddAsync(user);
-        }
 
-        public async Task<User> GetByMail(string email)
+        public async Task<User> GetUserByMail(string email)
         {
             return await _userDal.GetAsync(u => u.Email == email);
         }
@@ -35,6 +32,11 @@ namespace ECommerce.Auth.Business.Concrete.Managers
         public async Task<User> Created(User user)
         {
             return await _userDal.AddAsync(user);
+        }
+
+        public async Task<User> Login(string email, string password)
+        {
+            return await GetUserByMail(email);
         }
     }
 }

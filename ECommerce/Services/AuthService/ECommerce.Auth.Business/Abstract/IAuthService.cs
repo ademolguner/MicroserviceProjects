@@ -11,16 +11,10 @@ namespace ECommerce.Auth.Business.Abstract
 {
     public interface IAuthService
     {
-        User Register(UserForRegisterDto userForRegisterDto, string password);
-
-        Task<User> Login(UserForLoginDto userForLoginDto);
-
-        bool UserExists(string email);
-
+        
         AccessToken CreateAccessToken(User user);
 
-
         Task<User> RegisterUser(User user);
-
+        Task<User> LoginUser(UserForLoginDto userForLoginDto);
     }
 }

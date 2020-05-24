@@ -9,11 +9,8 @@ namespace ECommerce.Auth.Business.Abstract
     public interface IUserService
     {
         List<Role> GetClaims(User user);
-
-        void Add(User user);
-
-        Task<User> GetByMail(string email);
-
+        Task<User> GetUserByMail(string email);
         Task<User> Created(User user);
+        Task<User> Login(string email, string password);
     }
 }
