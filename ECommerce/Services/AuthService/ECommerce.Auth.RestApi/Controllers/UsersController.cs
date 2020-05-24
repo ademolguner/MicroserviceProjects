@@ -50,5 +50,13 @@ namespace ECommerce.Auth.RestApi.Controllers
             var updatedUser = await _mediator.Send(new UserEditCommand(userEditDto));
             return Ok(updatedUser);
         }
+
+        [Route("api/users/StatusChange")]
+        [HttpPost]
+        public async Task<ActionResult> StatusChange(int userID,bool status)
+        {
+            var updatedUser = await _mediator.Send(new UserStatusChangeCommand(userID,status));
+            return Ok(updatedUser);
+        }
     }
 }

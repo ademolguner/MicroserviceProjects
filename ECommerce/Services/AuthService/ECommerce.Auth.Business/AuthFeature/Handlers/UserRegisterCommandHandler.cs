@@ -1,4 +1,5 @@
 ﻿using ECommerce.Auth.Business.Abstract;
+using ECommerce.Auth.Business.Utilities.Exceptions;
 using ECommerce.Auth.Business.Utilities.Security.Hasing;
 using ECommerce.Auth.Entities.AuthFeature.Commands;
 using ECommerce.Auth.Entities.Models;
@@ -15,13 +16,21 @@ namespace ECommerce.Auth.Business.AuthFeature.Handlers
     {
 
         private readonly IAuthService _authService;
-        public UserRegisterCommandHandler(IAuthService authService)
+        private readonly IUserService _userService;
+        public UserRegisterCommandHandler(IAuthService authService, IUserService userService)
         {
             _authService = authService;
+            _userService = userService;
         }
 
         public async Task<int> Handle(UserRegisterCommand command, CancellationToken cancellationToken)
         {
+            var userToCheck = await _userService.GetUserByMail(command.Email);
+            if (userToCheck == null)
+            {
+                throw new EmailAddressAlreadyUsedException();
+            }
+
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(command.Password, out passwordHash, out passwordSalt);
 

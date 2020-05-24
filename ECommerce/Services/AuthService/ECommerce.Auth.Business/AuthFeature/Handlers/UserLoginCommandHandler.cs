@@ -1,5 +1,6 @@
 ﻿using ECommerce.Auth.Business.Abstract;
 using ECommerce.Auth.Business.AuthFeature.Queries;
+using ECommerce.Auth.Business.Utilities.Exceptions;
 using ECommerce.Auth.Business.Utilities.Security.Hasing;
 using ECommerce.Auth.Entities.Models;
 using ECommerce.Core.Utilities.Security.Jwt;
@@ -30,17 +31,15 @@ namespace ECommerce.Auth.Business.AuthFeature.Handlers
             var userToCheck = await _userService.GetUserByMail(command.Email);
             if (userToCheck == null)
             {
-                throw new Exception("hata metni");
+                throw new UserNotFoundException();
             }
 
             if (!HashingHelper.VerifyPasswordHash(command.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
-                throw new Exception("hata metni"); ;
+                throw new IncorrectPasswordException();
             }
 
             return await _authService.CreateAccessToken(userToCheck);
-            //var createdUser= await _authService.LoginUser(new Entities.Dtos.UserForLoginDto { Email = command.Email, Password = command.Password });
-            //return createdUser;
         }
 
         
