@@ -38,7 +38,7 @@ namespace ECommerce.Auth.Business.Concrete.Managers
             return user;
         }
 
-        public async  Task<User> Login(UserForLoginDto userForLoginDto)
+        public async Task<User> Login(UserForLoginDto userForLoginDto)
         {
             var userToCheck = await _userService.GetByMail(userForLoginDto.Email);
             if (userToCheck == null)
@@ -70,6 +70,9 @@ namespace ECommerce.Auth.Business.Concrete.Managers
             return accessToken;
         }
 
-         
+        public async Task<User> RegisterUser(User user)
+        {
+            return await _userService.Created(user);
+        }
     }
 }

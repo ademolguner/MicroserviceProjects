@@ -6,6 +6,7 @@ using ECommerce.Auth.Business.Abstract;
 using ECommerce.Auth.Entities.AuthFeature.Commands;
 using ECommerce.Auth.Entities.Dtos;
 using ECommerce.Core.Utilities.Security.Jwt;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -16,10 +17,12 @@ namespace ECommerce.Auth.RestApi.Controllers
     public class AuthController : Controller
     {
         private IAuthService _authService;
+        private readonly IMediator _mediator;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, IMediator mediator)
         {
             _authService = authService;
+            _mediator = mediator;
         }
 
         [HttpPost("login")]
@@ -41,20 +44,12 @@ namespace ECommerce.Auth.RestApi.Controllers
         }
 
         [HttpPost("register")]
-        public ActionResult Register(UserForRegisterDto userForRegisterDto)
+        public async Task<ActionResult> RegisterAsync(UserForRegisterDto userForRegisterDto)
         {
-            var userExists = _authService.UserExists(userForRegisterDto.Email);
-            if (userExists)
-                return BadRequest(false);
-
-            var registerResult = _authService.Register(userForRegisterDto, userForRegisterDto.Password);
-            var result = _authService.CreateAccessToken(registerResult);
-            if (result == null)
-            {
-                return Ok((AccessToken)null);
-            }
-
-            return BadRequest(error: result);
+            var createdUser = await _mediator.Send(new UserRegisterCommand(userForRegisterDto.FirstName, userForRegisterDto.LastName, userForRegisterDto.Email, userForRegisterDto.Password));
+            return Created(string.Empty, createdUser);
         }
+         
+         
     }
 }

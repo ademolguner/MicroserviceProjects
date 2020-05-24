@@ -18,5 +18,9 @@ namespace ECommerce.Auth.Business.Abstract
         bool UserExists(string email);
 
         AccessToken CreateAccessToken(User user);
+
+
+        Task<User> RegisterUser(User user);
+
     }
 }

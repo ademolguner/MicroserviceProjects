@@ -31,5 +31,10 @@ namespace ECommerce.Auth.Business.Concrete.Managers
         {
             return await _userDal.GetAsync(u => u.Email == email);
         }
+
+        public async Task<User> Created(User user)
+        {
+            return await _userDal.AddAsync(user);
+        }
     }
 }

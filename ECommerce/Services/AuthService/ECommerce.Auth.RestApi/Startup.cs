@@ -6,11 +6,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerce.Auth.Business.Abstract;
+using ECommerce.Auth.Business.AuthFeature.Handlers;
 using ECommerce.Auth.Business.Concrete.Managers;
 using ECommerce.Auth.Business.Utilities.Security.Jwt;
 using ECommerce.Auth.DataAccess.Abstract;
 using ECommerce.Auth.DataAccess.Concrete.EntityFramework;
 using ECommerce.Auth.DataAccess.Concrete.EntityFramework.Context;
+using ECommerce.Auth.Entities.AuthFeature.Commands;
+using ECommerce.Core.Amqp.Bus;
 using ECommerce.Core.Utilities.Security.Jwt;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -55,11 +58,9 @@ namespace ECommerce.Auth.RestApi
             //        b => b.MigrationsAssembly(typeof(ECommerceAuthApiProjectDbContext).Assembly.FullName)));
 
 
-            
 
-            //services.AddMediatR(Assembly.GetExecutingAssembly());
-
-
+            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(UserRegisterCommandHandler).GetTypeInfo().Assembly);
 
 
 

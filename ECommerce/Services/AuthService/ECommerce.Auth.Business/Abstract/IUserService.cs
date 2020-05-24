@@ -13,5 +13,7 @@ namespace ECommerce.Auth.Business.Abstract
         void Add(User user);
 
         Task<User> GetByMail(string email);
+
+        Task<User> Created(User user);
     }
 }
