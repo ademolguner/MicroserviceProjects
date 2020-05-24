@@ -36,7 +36,7 @@ namespace ECommerce.Auth.RestApi.Controllers
         [HttpPost("login")]
         public async Task<ActionResult> LoginAsync(UserForLoginDto userForLoginDto)
         {
-            var createdUser = await _mediator.Send(new UserLogingCommand(userForLoginDto.Email, userForLoginDto.Password));
+            var createdUser = await _mediator.Send(new UserLogingCommandQuery(userForLoginDto.Email, userForLoginDto.Password));
             return Created(string.Empty, createdUser);
         }
     }

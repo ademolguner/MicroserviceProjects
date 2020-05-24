@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace ECommerce.Auth.Business.AuthFeature.Handlers
 {
     
-    public class UserLoginCommandHandler : IRequestHandler<UserLogingCommand, AccessToken>
+    public class UserLoginCommandHandler : IRequestHandler<UserLogingCommandQuery, AccessToken>
     {
 
         private readonly IAuthService _authService;
@@ -24,7 +24,7 @@ namespace ECommerce.Auth.Business.AuthFeature.Handlers
             _userService = userService;
         }
 
-        public async Task<AccessToken> Handle(UserLogingCommand command, CancellationToken cancellationToken)
+        public async Task<AccessToken> Handle(UserLogingCommandQuery command, CancellationToken cancellationToken)
         {
 
             var userToCheck = await _userService.GetUserByMail(command.Email);

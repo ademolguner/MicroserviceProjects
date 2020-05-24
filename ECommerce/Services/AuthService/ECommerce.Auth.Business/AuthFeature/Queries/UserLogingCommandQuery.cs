@@ -8,13 +8,13 @@ using System.Text;
 namespace ECommerce.Auth.Business.AuthFeature.Queries
 {
     
-    public class UserLogingCommand : IRequest<AccessToken>
+    public class UserLogingCommandQuery : IRequest<AccessToken>
     {
         public string Email { get; set; }
         public string Password { get; set; } 
 
 
-        public UserLogingCommand(string email, string password)
+        public UserLogingCommandQuery(string email, string password)
         { 
             Email = email;
             Password = password;
