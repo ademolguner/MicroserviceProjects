@@ -4,6 +4,7 @@ using ECommerce.Auth.Business.Utilities.Security.Jwt;
 using ECommerce.Auth.Entities.Dtos;
 using ECommerce.Auth.Entities.Models;
 using ECommerce.Core.Utilities.Security.Jwt;
+using ServiceStack;
 using System;
 using System.Threading.Tasks;
 
@@ -20,15 +21,15 @@ namespace ECommerce.Auth.Business.Concrete.Managers
             _tokenHelper = tokenHelper;
         }
 
-
-
-       
-        public AccessToken CreateAccessToken(User user)
+        public async Task<AccessToken> CreateAccessToken(User user)
         {
             var claims = _userService.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, claims);
-            return accessToken;
+            return await Task.FromResult(accessToken);
         }
+
+
+
 
         public async Task<User> RegisterUser(User user)
         {
@@ -38,5 +39,12 @@ namespace ECommerce.Auth.Business.Concrete.Managers
         {
             return await _userService.Login(userForLoginDto.Email, userForLoginDto.Password);
         }
+
+
+        #region YARDIMCI METOTLAR
+
+
+
+        #endregion
     }
 }

@@ -2,6 +2,7 @@
 using ECommerce.Auth.Business.AuthFeature.Queries;
 using ECommerce.Auth.Business.Utilities.Security.Hasing;
 using ECommerce.Auth.Entities.Models;
+using ECommerce.Core.Utilities.Security.Jwt;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace ECommerce.Auth.Business.AuthFeature.Handlers
 {
     
-    public class UserLoginCommandHandler : IRequestHandler<UserLogingCommand, User>
+    public class UserLoginCommandHandler : IRequestHandler<UserLogingCommand, AccessToken>
     {
 
         private readonly IAuthService _authService;
@@ -23,7 +24,7 @@ namespace ECommerce.Auth.Business.AuthFeature.Handlers
             _userService = userService;
         }
 
-        public async Task<User> Handle(UserLogingCommand command, CancellationToken cancellationToken)
+        public async Task<AccessToken> Handle(UserLogingCommand command, CancellationToken cancellationToken)
         {
 
             var userToCheck = await _userService.GetUserByMail(command.Email);
@@ -37,14 +38,11 @@ namespace ECommerce.Auth.Business.AuthFeature.Handlers
                 throw new Exception("hata metni"); ;
             }
 
-            return userToCheck;
-
-
-
+            return await _authService.CreateAccessToken(userToCheck);
             //var createdUser= await _authService.LoginUser(new Entities.Dtos.UserForLoginDto { Email = command.Email, Password = command.Password });
             //return createdUser;
         }
 
-
+        
     }
 }
